@@ -1,18 +1,18 @@
 # Coding Challenge V3
 ## Task
-Build a Python application to produce a weekly SoundCloud financial usage report. 
+Build a Python application to produce a weekly financial usage report. 
 ###  Requirements
 1. The report only considers plays with >= 30 seconds duration.
 2. The report only considers tracks with a valid owner during the playing time.
 3. The report contains the following columns:
-    ● reporting_start_date: the start date of reporting week.
-    ● reporting_end_date: the end date of reporting week.
-    ● track_id
-    ● track_title
-    ● owner_id
-    ● price_per_play: the weekly payout of the owner divided by total plays of all tracks
+    1. reporting_start_date: the start date of reporting week.
+    2. reporting_end_date: the end date of reporting week.
+    3. track_id
+    4. track_title
+    5. owner_id
+    6. price_per_play: the weekly payout of the owner divided by total plays of all tracks
     belonged to that owner.
-    ● total_plays: total plays for this combination of track_id and owner_id.
+    7. total_plays: total plays for this combination of track_id and owner_id.
 4. The report should be stored as a table in BigQuery.
 ## Solution description
 
