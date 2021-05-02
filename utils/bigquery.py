@@ -2,7 +2,6 @@
 from datetime import date, timedelta
 import pandas as pd
 from google.cloud import bigquery
-from google.cloud import bigquery_storage
 
 BIGQUERY_DATE_FORMAT = "%Y%m%d"
 # Min song play duration to be counted
@@ -11,7 +10,6 @@ MIN_DURATION = 30
 
 def download_plays(
         client: bigquery.Client,
-        storage: bigquery_storage.BigQueryReadClient,
         start_date: date,
         end_date: date
 ) -> pd.DataFrame:
@@ -37,8 +35,7 @@ def download_plays(
 
 
 def download_track_info(
-        client: bigquery.Client,
-        storage: bigquery_storage.BigQueryReadClient
+        client: bigquery.Client
 ) -> pd.DataFrame:
     query_string = """
     SELECT *
@@ -54,8 +51,7 @@ def download_track_info(
 
 
 def download_owners_info(
-        client: bigquery.Client,
-        storage: bigquery_storage.BigQueryReadClient
+        client: bigquery.Client
 ) -> pd.DataFrame:
     query_string = """
     SELECT *
@@ -72,7 +68,6 @@ def download_owners_info(
 
 def download_payouts_info(
         client: bigquery.Client,
-        storage: bigquery_storage.BigQueryReadClient,
         end_date: date
 ) -> pd.DataFrame:
 

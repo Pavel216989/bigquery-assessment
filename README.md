@@ -14,8 +14,8 @@ Build a Python application to produce a weekly financial usage report.
     belonged to that owner.
     7. total_plays: total plays for this combination of track_id and owner_id.
 4. The report should be stored as a table in BigQuery.
-## Solution description
-
+## Notes
+The execution speed can be increased by using BigQuery Storage.
 ## Usage
 ### Prerequisites
 1. Before running the program, make sure to install all the requirements:
