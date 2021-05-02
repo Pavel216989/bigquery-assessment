@@ -1,0 +1,4 @@
+pandas==1.2.4
+pandas-gbq==0.15.0
+google-auth==1.30.0
+google-cloud-bigquery[bqstorage,pandas,pyarrow]
