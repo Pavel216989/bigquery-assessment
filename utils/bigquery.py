@@ -28,7 +28,7 @@ def download_plays(
         dataframe = (
             client.query(query_string)
                 .result()
-                .to_dataframe(bqstorage_client=storage)
+                .to_dataframe(create_bqstorage_client=False)
         )
         dataframes.append(dataframe)
     concatenated_df = pd.concat(dataframes)
@@ -47,7 +47,7 @@ def download_track_info(
     dataframe = (
         client.query(query_string)
             .result()
-            .to_dataframe(bqstorage_client=storage)
+            .to_dataframe(create_bqstorage_client=False)
     )
     print("Tracks titles successfully received.")
     return dataframe
@@ -64,7 +64,7 @@ def download_owners_info(
     dataframe = (
         client.query(query_string)
             .result()
-            .to_dataframe(bqstorage_client=storage)
+            .to_dataframe(create_bqstorage_client=False)
     )
     print("Tracks owners successfully received.")
     return dataframe
@@ -84,7 +84,7 @@ def download_payouts_info(
     dataframe = (
         client.query(query_string)
             .result()
-            .to_dataframe(bqstorage_client=storage)
+            .to_dataframe(create_bqstorage_client=False)
     )
     print("Payouts data successfully received.")
     return dataframe
