@@ -22,6 +22,7 @@ Build a Python application to produce a weekly financial usage report.
       we select all the plays and append them as dataframes to a list.
     * After getting all the plays dataframes, we create a concatenated pandas dataframe of all plays.
     * Finally, we filter  all the plays with duration < 30 out.
+
    In my opinion, filtering plays by duration after all plays are concatenated should be faster than running 
       ```SELECT ... WHERE duration >= 30``` multiple times. Also, concatenating multiple dataframes in the end should be 
       faster than running ```SELECT .. UNION ALL``` multiple times on the SQL side.
