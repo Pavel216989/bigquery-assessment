@@ -15,7 +15,7 @@ Build a Python application to produce a weekly financial usage report.
     7. total_plays: total plays for this combination of track_id and owner_id.
 4. The report should be stored as a table in BigQuery.
 ## Solution description
-![Schema](./img/schema.png)]
+![Schema](./img/schema.png)
 ### Design Decisions:
 1. I decided to select data from multiple tracks plays tables in the following way:
     * In a for loop, for each date between reporting_date_from and reporting_date_to
