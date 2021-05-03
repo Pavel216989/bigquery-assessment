@@ -20,8 +20,7 @@ def download_plays(
         date_converted = date_i.strftime(BIGQUERY_DATE_FORMAT)
         query_string = f"""
         SELECT *
-        FROM `rnr-data-eng-challenge.challenge_dataset.plays_{date_converted}`
-        WHERE duration >= {MIN_DURATION};
+        FROM `rnr-data-eng-challenge.challenge_dataset.plays_{date_converted}`;
         """
         dataframe = (
             client.query(query_string)
@@ -30,6 +29,7 @@ def download_plays(
         )
         dataframes.append(dataframe)
     concatenated_df = pd.concat(dataframes)
+    concatenated_df = concatenated_df[concatenated_df['duration'] >= 30]
     print("Tracks plays data successfully received.")
     return concatenated_df
 
