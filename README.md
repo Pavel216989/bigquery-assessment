@@ -37,8 +37,16 @@ Build a Python application to produce a weekly financial usage report.
 The solution can be executed as a python program from the command line. The entrypoint is called **main.py**
 **3 arguments are expected:**
 1. Reporting start date (string in %Y-%m-%d format).
-2. Reporting end date (string in %Y-%m-%d format).
-3. Destination BiqQuery table name (string).
+2. Reporting end date (string in %Y-%m-%d format). There has to be a payouts table in the source dataset for this date.
+3. Destination BiqQuery table name (non-empty string).
+**NOTE**: 
+   We don't validate if the start and end date are in a weekly interval, because the current database contains both
+   6 days and 7 days intervals (2019-05-06 - 2019-05-12 ans 2019-05-12 - 2019-05-19).
+   
+   The correctness of the reporting end date is validate on the stage of getting payouts data.
+   
+   We don't require it to be either 2019-05-12 or 2019-05-19, 
+   so that the system could work on a bigger dataset with other dates too.
 ### Example:
 ```
 python3 main.py "2019-05-13" "2019-05-19" "report"
