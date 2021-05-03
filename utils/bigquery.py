@@ -1,8 +1,8 @@
-# Download query results.
+import sys
 from datetime import date, timedelta
 import pandas as pd
 from google.cloud import bigquery
-
+from google.api_core.exceptions import NotFound
 BIGQUERY_DATE_FORMAT = "%Y%m%d"
 # Min song play duration to be counted
 MIN_DURATION = 30
@@ -76,12 +76,17 @@ def download_payouts_info(
         SELECT *
         FROM `rnr-data-eng-challenge.challenge_dataset.weekly_payout_{end_date}`;
         """
-    dataframe = (
-        client.query(query_string)
-            .result()
-            .to_dataframe(create_bqstorage_client=False)
-    )
-    print("Payouts data successfully received.")
+    try:
+        dataframe = (
+            client.query(query_string)
+                .result()
+                .to_dataframe(create_bqstorage_client=False)
+        )
+        print("Payouts data successfully received.")
+    except NotFound as e:
+        print(e)
+        print("Payouts source dataset has to contain a table for the specified reporting end date.")
+        sys.exit()
     return dataframe
 
 
