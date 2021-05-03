@@ -46,6 +46,7 @@ def parse_and_validate_arguments(
         print(f"The first two arguments must be dates. Required format: {DATE_FORMAT}")
         sys.exit()
     table_name = arguments[2]
+    assert len(table_name) > 0, "Table name can't be an empty string."
     print("Program arguments successfully parsed.")
     return reporting_start_date, reporting_end_date, table_name
 
