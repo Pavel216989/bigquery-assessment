@@ -2,6 +2,7 @@
 
 ## Task
 Build a Python application to produce a weekly financial usage report. 
+The application needs to read data from multiple BigQuery tables, apply filters, calculate rates, create a report and write it back to BigQuery.
 
 ###  Requirements
 
