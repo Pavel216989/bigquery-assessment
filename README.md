@@ -14,8 +14,18 @@ Build a Python application to produce a weekly financial usage report.
     belonged to that owner.
     7. total_plays: total plays for this combination of track_id and owner_id.
 4. The report should be stored as a table in BigQuery.
-## Notes
-The execution speed can be increased by using BigQuery Storage.
+## Solution description
+![Schema](./img/schema.png)]
+### Design Decisions:
+1. I decided to select data from multiple tracks plays tables in the following way:
+    * In a for loop, for each date between reporting_date_from and reporting_date_to
+      we select all the plays and append them as dataframes to a list.
+    * After getting all the plays dataframes, we create a concatenated pandas dataframe of all plays.
+    * Finally, we filter  all the plays with duration < 30 out.
+   In my opinion, filtering plays by duration after all plays are concatenated should be faster than running 
+      ```SELECT ... WHERE duration >= 30``` multiple times. Also, concatenating multiple dataframes in the end should be 
+      faster than running ```SELECT .. UNION ALL``` multiple times on the SQL side.
+2. The execution speed can be increased by using BigQuery Storage.
 ## Usage
 ### Prerequisites
 1. Before running the program, make sure to install all the requirements:
