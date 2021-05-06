@@ -57,7 +57,7 @@ python3 main.py "2019-05-13" "2019-05-19" "report"
 ```
 **NOTE**: 
    
-   The correctness of the reporting end date is validate on the stage of getting payouts data.
+   The correctness of the reporting end date is validated on the stage of getting payouts data.
    
    We don't require it to be either 2019-05-12 or 2019-05-19, 
    so that the system could work on a bigger dataset with other dates too.
