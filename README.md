@@ -56,8 +56,6 @@ The solution can be executed as a python program from the command line. The entr
 python3 main.py "2019-05-13" "2019-05-19" "report"
 ```
 **NOTE**: 
-   We don't validate if the start and end date are in a weekly interval, because the current database contains both
-   6 days and 7 days intervals (2019-05-06 - 2019-05-12 ans 2019-05-12 - 2019-05-19).
    
    The correctness of the reporting end date is validate on the stage of getting payouts data.
    
